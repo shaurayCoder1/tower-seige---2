@@ -55,7 +55,7 @@ function setup() {
   block25 = new Block(700,95,30,40);
 
   //ball holders with slings
-  polygon = Bodies.circle(50 ,200,70);
+  polygon = Bodies.circle(50 ,200,20);
   World.add(world,polygon)
 
   slingShot = new Slingshot(this.polygon,{x:100, y:200});
@@ -82,17 +82,17 @@ stand2.display();
   block5.display();
   block6.display();
   block7.display();
-  fill("pink");
+  fill("skyblue");
   block8.display();
   block9.display();
   block10.display();
   block11.display();
   block12.display();
-  fill("turquoise");
+  fill("skyblue");
   block13.display();
   block14.display();
   block15.display();
-  fill("grey");
+  fill("skyblue");
 
   fill("skyblue");
   block16.display();
@@ -101,11 +101,11 @@ stand2.display();
   block19.display();
   block20.display();
   block21.display();
-  fill("turquoise");
+  fill("skyblue");
   block22.display();
   block23.display();
   block24.display();
-  fill("pink");
+  fill("skyblue");
   block25.display();
 slingShot.display()
   
@@ -113,13 +113,18 @@ imageMode (CENTER)
 image(polygon_img,polygon.position.x,polygon.position.y,40,40)
 //ellipse(0,0,this.r, this.r);
 //ellipseMode(CENTER)
-text("Drag the Hexagonal stone and Realese it to launch it ",40,40)
-
+text("Drag the polygon to destroy the blocks ",40,40)
+fill("white")
 }
 function mouseDragged(){
-  Matter.Body.setPosition(this.polygon,{x:mouseX,y:mouseY})
-}   
+  Matter.Body.setPosition(this.polygon, {x: mouseX , y: mouseY});
+}
 
 function mouseReleased(){
   slingShot.fly()
 }
+function keyPressed(){
+  if(keyCode === 32){
+      slingShot.attach(this.polygon)
+  }
+  }
